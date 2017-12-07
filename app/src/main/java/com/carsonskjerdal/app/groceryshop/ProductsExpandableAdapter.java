@@ -25,35 +25,34 @@ public class ProductsExpandableAdapter extends ExpandableRecyclerAdapter<Product
         mInflater = LayoutInflater.from(context);
     }
 
+    //creates the main layout in the recycler view.
     @Override
     public ProductsParentViewHolder onCreateParentViewHolder(ViewGroup viewGroup) {
         View view = mInflater.inflate(R.layout.product_item_layout, viewGroup, false);
         return new ProductsParentViewHolder(view);
     }
 
+    //creates the child layout
     @Override
     public ProductsChildViewHolder onCreateChildViewHolder(ViewGroup viewGroup) {
         View view = mInflater.inflate(R.layout.product_item_layout_child, viewGroup, false);
         return new ProductsChildViewHolder(view);
     }
 
-    /*@Override
-    public void onBindParentViewHolder(ProductsParentViewHolder productsParentViewHolder, int i, Object parentObject) {
-        Products products = (Products) parentObject;
-        productsParentViewHolder.mTitleTextView.setText(products.getName());
-    }*/
 
+    //binds daya with the main parent layout
     @Override
     public void onBindParentViewHolder(ProductsParentViewHolder productViewHolder, int position, ParentListItem parentListItem) {
         Products products = (Products) parentListItem;
         productViewHolder.bind(products);
     }
 
+    //binds data with the child layout
     @Override
     public void onBindChildViewHolder(ProductsChildViewHolder productsChildViewHolder, int i, Object childObject) {
         ProductsChild productsChild = (ProductsChild) childObject;
-        productsChildViewHolder.mDateText.setText(productsChild.getDate().toString());
-        productsChildViewHolder.mCrimeSolvedCheckBox.setChecked(productsChild.getSolved());
+        productsChildViewHolder.mDateText.setText(productsChild.getPrice());
+
     }
 
 

@@ -1,7 +1,9 @@
 package com.carsonskjerdal.app.groceryshop;
 
+import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
+import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 
@@ -14,13 +16,39 @@ import android.widget.TextView;
 public class ProductsChildViewHolder extends ChildViewHolder {
 
     public TextView mDateText;
-    public CheckBox mCrimeSolvedCheckBox;
+    public Button mAddButton;
+    public TextView mQuanityText;
+    public SeekBar mSeekBar;
+    View view;
 
     public ProductsChildViewHolder(View itemView) {
         super(itemView);
 
         mDateText = itemView.findViewById(R.id.child_list_item_crime_date_text_view);
-        mCrimeSolvedCheckBox = itemView.findViewById(R.id.child_list_item_crime_solved_check_box);
+        mAddButton = itemView.findViewById(R.id.add_button);
+
+        view = itemView.findViewById(R.id.seekBar);
+
+        mQuanityText = view.findViewById(R.id.textViewCustom);
+        mSeekBar = view.findViewById(R.id.seekBarCustom);
+
+        mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
+                mQuanityText.setText("Quantity: " + i);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
 }

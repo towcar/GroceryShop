@@ -33,31 +33,9 @@ public class ProductsActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
-        String dateInString = "31-08-1982";
-        try {
-            date = sdf.parse(dateInString);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        ProductsChild beef = new ProductsChild(date, false);
-        ProductsChild cheese = new ProductsChild(date, true);
-        ProductsChild salsa = new ProductsChild(date, true);
-        ProductsChild tortilla = new ProductsChild(date, true);
-        ProductsChild ketchup = new ProductsChild(date, true);
-        ProductsChild bun = new ProductsChild(date, true);
-
-        int image = R.mipmap.ic_launcher;
-
-        Products taco = new Products("taco", image, Arrays.asList(beef, salsa, bun));
-        Products quesadilla = new Products("quesadilla", image, Arrays.asList(ketchup, tortilla, cheese));
-        Products burger = new Products("burger", image, Arrays.asList(bun, ketchup, salsa));
-        final List<Products> products = Arrays.asList(taco, quesadilla, burger);
 
         //proper list temporarily generated until a database is built
-        final List<Products> products2 = generateProductList();
+        final List<Products> products = generateProductList();
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         mAdapter = new ProductsExpandableAdapter(this, products);
@@ -100,20 +78,16 @@ public class ProductsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        ProductsChild beef = new ProductsChild(date, false);
-        ProductsChild cheese = new ProductsChild(date, true);
-        ProductsChild salsa = new ProductsChild(date, true);
-        ProductsChild tortilla = new ProductsChild(date, true);
-        ProductsChild ketchup = new ProductsChild(date, true);
-        ProductsChild bun = new ProductsChild(date, true);
+        String price = "2.45";
+
+        ProductsChild apple1 = new ProductsChild(price, false);
 
         int image = R.mipmap.ic_launcher;
 
-        Products taco = new Products("taco", image, Arrays.asList(beef, salsa, bun));
-        Products quesadilla = new Products("quesadilla", image, Arrays.asList(ketchup, tortilla, cheese));
-        Products burger = new Products("burger", image, Arrays.asList(bun, ketchup, salsa));
+        Products appleProduct1 = new Products("apple1", image, Arrays.asList(apple1));
 
-        final List<Products> products = Arrays.asList(taco, quesadilla, burger);
+
+        final List<Products> products = Arrays.asList(appleProduct1);
 
         return products;
     }

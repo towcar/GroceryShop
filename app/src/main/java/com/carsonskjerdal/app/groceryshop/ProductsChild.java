@@ -1,8 +1,5 @@
 package com.carsonskjerdal.app.groceryshop;
 
-import org.json.JSONArray;
-
-import java.util.Date;
 
 /**
  * Created by Carson on 2017-11-28.
@@ -13,20 +10,20 @@ import java.util.Date;
 public class ProductsChild {
 
 
-    private Date mDate;
+    private String mPrice;
     private boolean mSolved;
 
-    public ProductsChild(Date date, boolean solved) {
-        mDate = date;
+    public ProductsChild(String price, boolean solved) {
+        mPrice = price;
         mSolved = solved;
     }
 
-    public void setDate(Date mDate) {
-        this.mDate = mDate;
+    public void setPrice(String mPrice) {
+        this.mPrice = mPrice;
     }
 
-    public Date getDate() {
-        return mDate;
+    public String getPrice() {
+        return mPrice;
     }
 
     public void setSolved(Boolean mSolved) {
@@ -35,5 +32,12 @@ public class ProductsChild {
 
     public Boolean getSolved() {
         return mSolved;
+    }
+
+    public String getQuanity() {
+
+        String quanity;
+
+        return "Quanity: 0";
     }
 }

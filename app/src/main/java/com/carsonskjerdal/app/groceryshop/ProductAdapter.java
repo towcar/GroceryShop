@@ -14,7 +14,9 @@ import java.util.List;
 /**
  * Created by Carson on 2017-11-22.
  *
- * RecyclerView adapter extended with project-specific required methods.
+ * RecyclerView adapter extended with project-specific required methods
+ *
+ * This may all be null and useless now after upgrading my adapter with the ExpandabaleRecyclerAdapter
  */
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductHolder> {
