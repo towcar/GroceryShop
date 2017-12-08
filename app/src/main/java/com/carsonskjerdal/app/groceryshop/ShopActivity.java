@@ -6,8 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.SearchView;
 
 import java.util.ArrayList;
@@ -18,6 +22,7 @@ public class ShopActivity extends AppCompatActivity {
     //Ui Componenets
     RecyclerView recyclerView;
     SearchView searchView;
+    ImageButton cartButton;
 
     //Adapter
     GroceryAdapter myAdapter;
@@ -30,8 +35,10 @@ public class ShopActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+
+        Toolbar toolbar = findViewById(R.id.toolbar1);
         setSupportActionBar(toolbar);
+
 
         //Search Bar
         searchView = findViewById(R.id.search_view);
@@ -64,7 +71,7 @@ public class ShopActivity extends AppCompatActivity {
             }
         });
 
-        recyclerView.addOnItemTouchListener( new RecyclerItemClickListener(this, recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
                         // launch InsectDetailsActivity passing information over.
@@ -89,6 +96,7 @@ public class ShopActivity extends AppCompatActivity {
         );
 
 
+
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,8 +109,40 @@ public class ShopActivity extends AppCompatActivity {
     }
 
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
 
-    private List<Groceries> buildList() {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_complete:
+                // complete workout
+                Integer int1 = 0;
+                //Adds new workout to Adapter
+                Intent myIntent = new Intent(ShopActivity.this,
+                        CartActivity.class);
+                startActivityForResult(myIntent, int1);
+                return true;
+
+            /*case R.id.action_complete:
+                // User chose the "Favorite" action, mark the current item
+                // as a favorite...
+                return true;*/
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
+
+
+   private List<Groceries> buildList() {
         List<Groceries> list = new ArrayList<>();
         Groceries grocery;
         grocery = new Groceries("App1", 0);
@@ -138,11 +178,12 @@ public class ShopActivity extends AppCompatActivity {
                 temp.add(d);
 
             }
+
+            //update recyclerview
+            myAdapter.updateList(temp);
+
+
         }
-        //update recyclerview
-        myAdapter.updateList(temp);
-
-
     }
-
 }
+

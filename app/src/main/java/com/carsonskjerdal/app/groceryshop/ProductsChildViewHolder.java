@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -47,6 +48,22 @@ public class ProductsChildViewHolder extends ChildViewHolder {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
+            }
+        });
+
+        mAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //add the item to the shopping cart.
+
+                //toast
+                String toastMsg = mDateText.getText() + " Added To Cart";
+                Toast.makeText(view.getContext(),
+                        toastMsg,
+                        Toast.LENGTH_SHORT)
+                        .show();
+
+                //add a shopping cart in top corner after
             }
         });
     }

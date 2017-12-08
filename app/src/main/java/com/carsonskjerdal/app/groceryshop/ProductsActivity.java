@@ -1,10 +1,16 @@
 package com.carsonskjerdal.app.groceryshop;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.SearchView;
 
 import java.text.ParseException;
@@ -17,8 +23,7 @@ import java.util.List;
 public class ProductsActivity extends AppCompatActivity {
 
     //Ui Componenets
-    RecyclerView recyclerView;
-    SearchView searchView;
+
 
     //Adapter
     ProductsExpandableAdapter mAdapter;
@@ -33,6 +38,7 @@ public class ProductsActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //cartButton = findViewById(R.id.toolbar_button2);
 
         //proper list temporarily generated until a database is built
         final List<Products> products = generateProductList();
@@ -65,6 +71,8 @@ public class ProductsActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
     }
 
     private List<Products> generateProductList() {
@@ -109,5 +117,37 @@ public class ProductsActivity extends AppCompatActivity {
         //productsExpandableAdapter.updateList(temp);
 
 
+    }
+
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_complete:
+                // complete workout
+                Integer int1 = 0;
+                //Adds new workout to Adapter
+                Intent myIntent = new Intent(ProductsActivity.this,
+                        CartActivity.class);
+                startActivityForResult(myIntent, int1);
+                return true;
+
+            /*case R.id.action_complete:
+                // User chose the "Favorite" action, mark the current item
+                // as a favorite...
+                return true;*/
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 }

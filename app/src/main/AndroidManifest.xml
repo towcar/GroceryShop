@@ -31,7 +31,8 @@
         <activity
             android:name=".ProductsActivity"
             android:label="@string/title_activity_products"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".CartActivity"></activity>
     </application>
 
 </manifest>

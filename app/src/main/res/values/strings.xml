@@ -17,4 +17,8 @@
     <string name="title_activity_shop">ShopActivity</string>
     <string name="name">name</string>
     <string name="title_activity_products">ProductsActivity</string>
+    <string name="default_quantity">Quantity: 0</string>
+    <string name="checkout">Checkout</string>
+    <string name="order_total">Order Total:</string>
+    <string name="your_order">Your Order</string>
 </resources>

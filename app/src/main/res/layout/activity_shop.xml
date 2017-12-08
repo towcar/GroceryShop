@@ -8,20 +8,19 @@
     tools:context="com.carsonskjerdal.app.groceryshop.ShopActivity">
 
 
-    <android.support.design.widget.AppBarLayout
+    <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+        android:background="@color/colorPrimary"
+        android:id="@+id/toolbar1"
+        android:elevation="4dp"/>
 
 
-    </android.support.design.widget.AppBarLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
 
     <SearchView
         android:id="@+id/search_view"
@@ -32,8 +31,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"/>
 
-    </android.support.v7.widget.RecyclerView>
-
+</LinearLayout>
 </LinearLayout>
