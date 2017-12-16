@@ -2,6 +2,7 @@ package com.carsonskjerdal.app.groceryshop;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -30,15 +31,23 @@ public class MainHomePageActivity extends BaseActivity {
             switch(v.getId()){
                 case R.id.shop_button:
                     //Launch Shop Activity
-                    Intent i = new Intent(MainHomePageActivity.this, ShopActivity.class);
+                    Intent i = new Intent(MainHomePageActivity.this, GroceryActivity.class);
                     startActivity(i);
 
                     break;
-                case R.id.button2:
-                    //DO something
-                    break;
+
             }
 
         }
     };
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

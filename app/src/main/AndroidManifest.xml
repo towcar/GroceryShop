@@ -17,7 +17,8 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name" />
-        <activity android:name=".MainHomePageActivity">
+        <activity android:name=".MainHomePageActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,14 +26,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ShopActivity"
+            android:name=".GroceryActivity"
             android:label="@string/title_activity_shop"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ProductsActivity"
             android:label="@string/title_activity_products"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".CartActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CartActivity" />
+        <activity android:name=".CheckoutActivity" />
+        <activity android:name=".FinishedActivity"/>
     </application>
 
 </manifest>

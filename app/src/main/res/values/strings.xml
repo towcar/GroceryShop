@@ -14,11 +14,14 @@
         completions."
     </string>
     <string name="todo">TODO</string>
-    <string name="title_activity_shop">ShopActivity</string>
+    <string name="title_activity_shop">Shop Activity</string>
     <string name="name">name</string>
-    <string name="title_activity_products">ProductsActivity</string>
+    <string name="title_activity_products">Products Activity</string>
     <string name="default_quantity">Quantity: 0</string>
     <string name="checkout">Checkout</string>
     <string name="order_total">Order Total:</string>
     <string name="your_order">Your Order</string>
+    <string name="submit">Submit</string>
+    <string name="grocery_shop">Grocery Shop</string>
+    <string name="add_to_cart">Add To Cart</string>
 </resources>

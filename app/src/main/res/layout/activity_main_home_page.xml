@@ -1,41 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@mipmap/imgbtm"
     tools:context="com.carsonskjerdal.app.groceryshop.MainHomePageActivity">
 
-    <ImageView
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp">
+
+    <TextView
+        android:id="@+id/text_view_main"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/toolbar"
+        android:layout_alignParentStart="true"
+        android:text="@string/grocery_shop"
+        android:textAlignment="center"
+        android:textColor="@color/colorGrey1"
+        style="@style/Base.TextAppearance.Widget.AppCompat.Toolbar.Title"/>
+           </android.support.v7.widget.Toolbar>
+
+
+    <ImageView
+        android:layout_width="110dp"
+        android:layout_height="122dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:contentDescription="TODO"
+        android:src="@drawable/user" />
+
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/todo"
-        android:src="@mipmap/supermarkeflatvector" />
+        android:textColor="#444444"
+        android:text="Carson Skjerdal" />
 
     <Button
         android:id="@+id/shop_button"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:background="@color/colorAccent"
+        android:text="SHOP"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button2"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="SHOP" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="187dp"
-            android:layout_height="wrap_content"
-            android:text="N/A" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="187dp"
-            android:layout_height="wrap_content"
-            android:text="N/A" />
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:background="@android:color/transparent"
+        android:text="Settings"
+        android:textColor="@color/colorGrey3" />
 
 </LinearLayout>

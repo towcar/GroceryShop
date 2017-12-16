@@ -10,14 +10,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShopActivity extends AppCompatActivity {
+public class GroceryActivity extends AppCompatActivity {
 
     //Ui Componenets
     RecyclerView recyclerView;
@@ -42,7 +41,13 @@ public class ShopActivity extends AppCompatActivity {
 
         //Search Bar
         searchView = findViewById(R.id.search_view);
-        //searchField = findViewById(R.id.search_view);
+
+        //Turn iconified to false:
+        searchView.setIconified(false);
+        //The above line will expand it to fit the area as well as throw up the keyboard
+
+        //To remove the keyboard, but make sure you keep the expanded version:
+        searchView.clearFocus();
 
         list = buildList();
 
@@ -122,7 +127,7 @@ public class ShopActivity extends AppCompatActivity {
                 // complete workout
                 Integer int1 = 0;
                 //Adds new workout to Adapter
-                Intent myIntent = new Intent(ShopActivity.this,
+                Intent myIntent = new Intent(GroceryActivity.this,
                         CartActivity.class);
                 startActivityForResult(myIntent, int1);
                 return true;
@@ -145,23 +150,24 @@ public class ShopActivity extends AppCompatActivity {
    private List<Groceries> buildList() {
         List<Groceries> list = new ArrayList<>();
         Groceries grocery;
-        grocery = new Groceries("App1", 0);
+        Integer image = R.mipmap.ic_launcher_round;
+        grocery = new Groceries("App1", image);
         list.add(grocery);
-        grocery = new Groceries("App2", 0);
+        grocery = new Groceries("App2", image);
         list.add(grocery);
-         grocery = new Groceries("App3", 0);
+         grocery = new Groceries("App3", image);
         list.add(grocery);
-         grocery = new Groceries("App4", 0);
+         grocery = new Groceries("App4", image);
         list.add(grocery);
-        grocery = new Groceries("App5", 0);
+        grocery = new Groceries("App5", image);
         list.add(grocery);
-         grocery = new Groceries("App6", 0);
+         grocery = new Groceries("App6", image);
         list.add(grocery);
-         grocery = new Groceries("App7", 0);
+         grocery = new Groceries("App7", image);
         list.add(grocery);
-         grocery = new Groceries("App8", 0);
+         grocery = new Groceries("App8", image);
         list.add(grocery);
-         grocery = new Groceries("App9", 0);
+         grocery = new Groceries("App9", image);
         list.add(grocery);
 
         return list;

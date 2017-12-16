@@ -11,10 +11,11 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:text="@string/your_order"
         android:background="@color/colorPrimaryDark"
+        android:paddingTop="10dp"
+        android:text="@string/your_order"
         android:textAlignment="center"
-       android:paddingTop="10dp"/>
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 
     <android.support.v7.widget.RecyclerView
@@ -39,9 +40,11 @@
             <Button
                 android:id="@+id/button_checkout"
                 android:layout_width="200dp"
-                android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
-                android:text="@string/checkout" />
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="@string/checkout"
+                android:textColor="@color/colorGrey1" />
         </LinearLayout>
 
         <LinearLayout
@@ -49,23 +52,29 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:layout_weight="1"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp">
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:text="@string/order_total"
                 android:textAlignment="textStart"
-                android:text="@string/order_total" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAlignment="textEnd"
                 android:layout_weight="1"
-                android:text="$ 145.86" />
+                android:text="$ 145.86"
+                android:textAlignment="textEnd"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/colorGrey1"
+                android:textStyle="italic" />
         </LinearLayout>
 
     </LinearLayout>

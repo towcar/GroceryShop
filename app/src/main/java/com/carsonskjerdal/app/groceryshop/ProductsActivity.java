@@ -24,6 +24,7 @@ public class ProductsActivity extends AppCompatActivity {
 
     //Ui Componenets
 
+    SearchView searchView;
 
     //Adapter
     ProductsExpandableAdapter mAdapter;
@@ -38,7 +39,15 @@ public class ProductsActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //cartButton = findViewById(R.id.toolbar_button2);
+
+        //Search Bar
+        searchView = findViewById(R.id.search_view);
+        //Turn iconified to false:
+        searchView.setIconified(false);
+        //The above line will expand it to fit the area as well as throw up the keyboard
+
+        //To remove the keyboard, but make sure you keep the expanded version:
+        searchView.clearFocus();
 
         //proper list temporarily generated until a database is built
         final List<Products> products = generateProductList();
@@ -88,14 +97,14 @@ public class ProductsActivity extends AppCompatActivity {
 
         String price = "2.45";
 
-        ProductsChild apple1 = new ProductsChild(price, false);
+        ProductsChild apple1 = new ProductsChild(price);
 
-        int image = R.mipmap.ic_launcher;
+        int image = R.mipmap.fishicon48;
 
-        Products appleProduct1 = new Products("apple1", image, Arrays.asList(apple1));
+        Products appleProduct1 = new Products("Fish", image, Arrays.asList(apple1));
 
 
-        final List<Products> products = Arrays.asList(appleProduct1);
+        final List<Products> products = Arrays.asList(appleProduct1, appleProduct1);
 
         return products;
     }
