@@ -14,10 +14,10 @@ import java.util.List;
 public final class Products implements ParentListItem {
 
     private String name;
-    private Integer image;
+    private String image;
     private List<ProductsChild> mChildrenList;
 
-    public Products(String name, Integer image, List<ProductsChild> productsChildren){
+    public Products(String name, String image, List<ProductsChild> productsChildren){
 
         this.name = name;
         this.image = image;
@@ -32,11 +32,11 @@ public final class Products implements ParentListItem {
         return name;
     }
 
-    public void setImage(Integer image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
-    public Integer getImage() {
+    public String getImage() {
         return image;
     }
 

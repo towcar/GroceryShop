@@ -24,4 +24,5 @@
     <string name="submit">Submit</string>
     <string name="grocery_shop">Grocery Shop</string>
     <string name="add_to_cart">Add To Cart</string>
+    <string name="payment_text">Please Enter Your Credit Card Details</string>
 </resources>

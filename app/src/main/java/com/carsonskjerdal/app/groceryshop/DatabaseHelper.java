@@ -15,7 +15,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database Info
     private static final String DATABASE_NAME = "groceryDatabase";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 16;
 
     // Table Names
     private static final String TABLE_GROCERIES = "groceries";
@@ -24,8 +24,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Grocery Table Columns
     private static final String KEY_GROCERIES_ID = "id";
-    private static final String KEY_GROCERIES_NAME = "userName";
-    private static final String KEY_GROCERIES_IMAGE = "userImage";
+    private static final String KEY_GROCERIES_NAME = "groceryName";
+    private static final String KEY_GROCERIES_IMAGE = "groceryImage";
 
     // User Table Columns
     private static final String KEY_PRODUCTS_ID = "id";
@@ -57,7 +57,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String CREATE_POSTS_TABLE = "CREATE TABLE " + TABLE_GROCERIES +
                 "(" +
                 KEY_GROCERIES_ID + " INTEGER PRIMARY KEY," + // Define a primary key
-                KEY_GROCERIES_NAME + " INTEGER REFERENCES " + TABLE_GROCERIES + "," + // Define a foreign key
+                KEY_GROCERIES_NAME + " TEXT, " +
                 KEY_GROCERIES_IMAGE + " TEXT" +
                 ")";
 
@@ -81,7 +81,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_POSTS_TABLE);
         db.execSQL(CREATE_USERS_TABLE);
         db.execSQL(CREATE_CART_TABLE);
+
+        addTableData(db);
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -95,20 +98,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    //Shopping Cart Methods
-    public void createCartItem(String name, String image, String price) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
+    private void addTableData(SQLiteDatabase db) {
         ContentValues values = new ContentValues();
-        //adding values to ContentValues
-        //TODO changes the values input on the 2nd argument
-        values.put(KEY_CART_NAME, name);
-        values.put(KEY_CART_IMAGE, image);
-        values.put(KEY_CART_PRICE, price);
 
-        // insert row
-        db.insert(TABLE_CART, null, values);
+        //add Grocery data to its table
 
+        String[][] data = {{"Fish", "fishicon48"}, {"Bread", "breadicon"}, {"Milk", "milkicon"}, {"Apples", "appleicon"},
+                {"Oranges", "orangeicon"}, {"Candy", "candyicon"}, {"Soup", "soupicon"}, {"Medicine", "medicineicon"}, {"Pasta", "pastaicon"},
+                {"Condiments", "condimenticon"}, {"Soft Drinks", "softdrinkicon"}, {"Beef", "beeficon"}, {"Vegetables", "veggieicon"}, {"Cheese", "cheeseicon"}};
 
+        for (String[] aData : data) {
+            values.put(KEY_GROCERIES_NAME, aData[0]);
+            values.put(KEY_GROCERIES_IMAGE, aData[1]);
+
+            db.insert(TABLE_GROCERIES, null, values);
+        }
+
+        //add Product data to its table
+        ContentValues values2 = new ContentValues();
+        //ugly example data
+        String[][] data2 = {{"Johnnys Fish", "fishicon48", "11.95", "Fish"},  {"Pirate Man Fish", "fishicon48", "15.95", "Fish"},  {"Prime AA Fish", "fishicon48", "11.95", "Fish"},  {"Bland Bread", "0", "3.15", "Bread"}
+                ,  {"King's Bread", "0", "6.95", "Bread"},  {"Wonder Bread", "0", "3.95", "Bread"},  {"Moo Man Milk", "0", "4.25", "Milk"},  {"Prairie Cow", "0", "4.45", "Milk"}
+                ,  {"American Milk", "0", "11.95", "Milk"},  {"Red Apples", "0", "11.95", "Apples"},  {"Round New Yorks", "0", "11.95", "Apples"},  {"Sour Sam Apples", "0", "11.95", "Apples"}
+                ,  {"Not Red Oranges", "0", "0.95", "Oranges"},  {"Chinese", "0", "1.10", "Oranges"},  {"Box Oranges", "0", "18.95", "Oranges"},  {"Sour Keys", "0", "0.25", "Candy"}
+                ,  {"Blue Whales", "0", "0.25", "Candy"},  {"Pringles", "0", "1.25", "Candy"},  {"Johnnys Fish", "0", "11.95", "Soup"},  {"Johnnys Fish", "0", "11.95", "Soup"}
+                ,  {"Johnnys Fish", "0", "11.95", "Soup"},  {"Johnnys Fish", "0", "11.95", "Medicine"},  {"Johnnys Fish", "0", "11.95", "Medicine"},  {"Johnnys Fish", "0", "11.95", "Medicine"}
+                ,  {"Johnnys Fish", "0", "11.95", "Pasta"},  {"Johnnys Fish", "0", "11.95", "Pasta"},  {"Johnnys Fish", "0", "11.95", "Pasta"},  {"Johnnys Fish", "0", "11.95", "Condiments"}
+                ,  {"Johnnys Fish", "0", "11.95", "Condiments"},  {"Johnnys Fish", "0", "11.95", "Soft Drinks"},  {"Johnnys Fish", "0", "11.95", "Soft Drinks"},  {"Johnnys Fish", "0", "11.95", "Soft Drinks"}
+                ,  {"Johnnys Fish", "0", "11.95", "Beef"},  {"Johnnys Fish", "0", "11.95", "Condiments"},  {"Johnnys Fish", "0", "11.95", "Beef"},  {"Johnnys Fish", "0", "11.95", "Beef"}
+                ,  {"Johnnys Fish", "0", "11.95", "Vegetables"},  {"Johnnys Fish", "0", "11.95", "Vegetables"},  {"Johnnys Fish", "0", "11.95", "Vegetables"},  {"Johnnys Fish", "0", "11.95", "Cheese"}
+                ,  {"Johnnys Fish", "0", "11.95", "Cheese"},  {"Johnnys Fish", "0", "11.95", "Cheese"}};
+
+        for (String[] aData : data2) {
+            values2.put(KEY_PRODUCTS_NAME, aData[0]);
+            values2.put(KEY_PRODUCTS_IMAGE, aData[1]);
+            values2.put(KEY_PRODUCTS_PRICE, aData[2]);
+            values2.put(KEY_PRODUCTS_GROUP, aData[3]);
+
+            db.insert(TABLE_PRODUCTS, null, values2);
+        }
     }
 }

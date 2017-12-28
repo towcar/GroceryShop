@@ -1,8 +1,10 @@
 package com.carsonskjerdal.app.groceryshop;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -29,6 +31,9 @@ public class GroceryActivity extends AppCompatActivity {
     //list
     List<Groceries> list;
 
+    //Database
+    DatabaseManager dbManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,7 @@ public class GroceryActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar1);
         setSupportActionBar(toolbar);
 
+        dbManager = DatabaseManager.getInstance(this);
 
         //Search Bar
         searchView = findViewById(R.id.search_view);
@@ -56,6 +62,10 @@ public class GroceryActivity extends AppCompatActivity {
 
         LinearLayoutManager llm = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(llm);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                llm.getOrientation());
+        recyclerView.addItemDecoration(dividerItemDecoration);
 
         myAdapter = new GroceryAdapter(list);
 
@@ -85,10 +95,8 @@ public class GroceryActivity extends AppCompatActivity {
                         //passing data over to next activity
                         Groceries grocery = list.get(position);
                         String nameToPass = grocery.getName();
-                        Integer imageToPass = grocery.getImage();
 
                         intent.putExtra("resultName", nameToPass);
-                        intent.putExtra("resultImage", imageToPass);
 
                         startActivity(intent);
                     }
@@ -148,29 +156,26 @@ public class GroceryActivity extends AppCompatActivity {
 
 
    private List<Groceries> buildList() {
-        List<Groceries> list = new ArrayList<>();
-        Groceries grocery;
-        Integer image = R.mipmap.ic_launcher_round;
-        grocery = new Groceries("App1", image);
-        list.add(grocery);
-        grocery = new Groceries("App2", image);
-        list.add(grocery);
-         grocery = new Groceries("App3", image);
-        list.add(grocery);
-         grocery = new Groceries("App4", image);
-        list.add(grocery);
-        grocery = new Groceries("App5", image);
-        list.add(grocery);
-         grocery = new Groceries("App6", image);
-        list.add(grocery);
-         grocery = new Groceries("App7", image);
-        list.add(grocery);
-         grocery = new Groceries("App8", image);
-        list.add(grocery);
-         grocery = new Groceries("App9", image);
-        list.add(grocery);
+       List<Groceries> list = new ArrayList<>();
+       Groceries groceries;
 
-        return list;
+       //opens a cursor containing all the data from our database Table
+
+       //loop through putting the cursor data into object which are then put into a list
+       try (Cursor cursor = dbManager.queryAllItems("groceries")) {
+           while (cursor.moveToNext()) {
+               String data = cursor.getString(1);
+               String data2 = cursor.getString(2);
+
+               groceries = new Groceries(data, data2);
+
+               list.add(groceries);
+           }
+           //close the cursor after use.
+           cursor.close();
+       }
+
+       return list;
     }
 
     void filter(String text) {

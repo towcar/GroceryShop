@@ -16,3 +16,22 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 }
+
+//TODO Master todo List
+//Pictures for images - working
+//Quanity passes over to Cart
+//Cart quantity data
+//Pick if cart details are correct and change the options
+//set up a logging in system
+//rotation
+//cancel item in order
+//change quanity
+//perhaps an information screen?
+//fix up finish screen to look nicer
+//      (wierd line must be the image itself)
+//
+//extras
+//saving order history
+//delivery tracking
+//setting with features
+//

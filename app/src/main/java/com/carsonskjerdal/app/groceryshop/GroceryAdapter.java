@@ -1,6 +1,8 @@
 package com.carsonskjerdal.app.groceryshop;
 
+import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,7 +64,13 @@ public class GroceryAdapter extends RecyclerView.Adapter<GroceryAdapter.GroceryH
 
         //Sets Text
         holder.name.setText(grocery.getName());
-        holder.image.setImageResource(grocery.getImage());
+
+        //sets image
+        Log.e("adapter","image " + grocery.getImage());
+        String uri = grocery.getImage();
+        Resources res = holder.image.getContext().getResources();
+        holder.image.setImageResource(res.getIdentifier(uri, "drawable", BuildConfig.APPLICATION_ID));
+        //holder.image.setImageResource(grocery.getImage());
 
     }
 

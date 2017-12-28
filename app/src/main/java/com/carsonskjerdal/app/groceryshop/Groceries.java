@@ -10,9 +10,9 @@ package com.carsonskjerdal.app.groceryshop;
 public final class Groceries  {
 
     private String name;
-    private Integer image;
+    private String image;
 
-    public Groceries(String name, Integer image){
+    public Groceries(String name, String image){
 
         this.name = name;
         this.image = image;
@@ -26,11 +26,11 @@ public final class Groceries  {
         return name;
     }
 
-    public void setImage(Integer image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
-    public Integer getImage() {
+    public String getImage() {
         return image;
     }
 

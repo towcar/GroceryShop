@@ -7,6 +7,16 @@
     tools:context="com.carsonskjerdal.app.groceryshop.CheckoutActivity"
     android:background="@color/colorGrey2">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/colorPrimaryDark"
+        android:paddingTop="10dp"
+        android:text="@string/payment_text"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,9 +40,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="6"
+        android:layout_weight="5"
         android:background="@color/colorPrimaryDark"
-        android:layout_margin="10dp"
+
         android:elevation="2dp">
 
         <Button
@@ -41,7 +51,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:backgroundTint="@color/colorAccent"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/colorGrey1"
             android:text="@string/submit" />
     </RelativeLayout>
 

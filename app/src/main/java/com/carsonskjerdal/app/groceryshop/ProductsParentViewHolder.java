@@ -1,6 +1,10 @@
 package com.carsonskjerdal.app.groceryshop;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
@@ -15,6 +19,7 @@ import android.widget.TextView;
 public class ProductsParentViewHolder extends ParentViewHolder{
 
     public TextView mTitleTextView;
+    public ImageView mIconView;
     public ImageView mParentDropDownArrow;
 
     private static final float INITIAL_POSITION = 0.0f;
@@ -24,11 +29,19 @@ public class ProductsParentViewHolder extends ParentViewHolder{
         super(itemView);
 
         mTitleTextView = itemView.findViewById(R.id.name);
+        mIconView = itemView.findViewById(R.id.image);
         mParentDropDownArrow = itemView.findViewById(R.id.parent_list_item_expand_arrow);
     }
 
     public void bind(@NonNull Products product) {
+
+        //set the text of item
         mTitleTextView.setText(product.getName());
+
+        //set item image
+        Resources res = itemView.getContext().getResources();
+        String uri = product.getImage();
+        mIconView.setImageResource(res.getIdentifier(uri, "drawable", BuildConfig.APPLICATION_ID));
     }
 
     @Override
