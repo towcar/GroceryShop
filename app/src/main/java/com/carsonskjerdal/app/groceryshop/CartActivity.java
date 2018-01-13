@@ -86,7 +86,7 @@ public class CartActivity extends AppCompatActivity {
     private List<CartItems> getCartData() {
         List<CartItems> list = new ArrayList<>();
         Integer image = R.mipmap.ic_launcher_round;
-        cartItems = new CartItems("App1", 0, "19.21");
+        cartItems = new CartItems("App1", 0, "19.21", "1");
 
         //opens a cursor containing all the data from our database Table
 
@@ -96,8 +96,9 @@ public class CartActivity extends AppCompatActivity {
                 String data = cursor.getString(1);
                 Integer data2 = cursor.getInt(2);
                 String data3 = cursor.getString(3);
+                String data4 = cursor.getString(4);
 
-                cartItems = new CartItems(data, data2, data3);
+                cartItems = new CartItems(data, data2, data3, data4);
 
                 list.add(cartItems);
             }

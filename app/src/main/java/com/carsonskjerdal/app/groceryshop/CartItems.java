@@ -14,12 +14,14 @@ public final class CartItems {
     private String name;
     private Integer image;
     private String price;
+    private String quantity;
 
-    public CartItems(String name, Integer image, String price){
+    public CartItems(String name, Integer image, String price, String quantity){
 
         this.name = name;
         this.image = image;
         this.price = price;
+        this.quantity = quantity;
 
     }
 
@@ -46,5 +48,13 @@ public final class CartItems {
 
     public String getPrice() {
         return price;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getQuantity() {
+        return quantity;
     }
 }

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,12 +32,13 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartHo
 
     }
 
-    /* ViewHolder for each insect item */
+    /* ViewHolder for each cart item */
     public class CartHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView name;
         ImageView image;
         TextView price;
+        Button button;
 
 
         CartHolder(View itemView) {
@@ -44,13 +46,19 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartHo
             name = itemView.findViewById(R.id.name);
             image = itemView.findViewById(R.id.image);
             price = itemView.findViewById(R.id.price);
+            button = itemView.findViewById(R.id.delete);
         }
 
 
 
         @Override
         public void onClick(View v) {
-
+            Log.e("Adapter","On Click");
+            switch(v.getId()){
+                case R.id.delete:
+                    Log.e("Adapter","Item Deleted");
+                    break;
+            }
         }
     }
 
@@ -70,7 +78,8 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartHo
         //Sets Text
         holder.name.setText(cartItem.getName());
         holder.image.setImageResource(cartItem.getImage());
-        holder.price.setText(cartItem.getPrice());
+        String total = cartItem.getPrice() + " x " + cartItem.getQuantity();
+        holder.price.setText(total);
     }
 
 

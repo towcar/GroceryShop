@@ -9,10 +9,15 @@ import android.widget.Button;
 
 public class FinishedActivity extends AppCompatActivity {
 
+    NotificationHandler nHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finished);
+
+        nHandler = NotificationHandler.getInstance(this);
+        nHandler.createSimpleNotification(this);
 
         Button buttonFinish = findViewById(R.id.buttonFinish);
 

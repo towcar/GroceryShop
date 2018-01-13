@@ -15,7 +15,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database Info
     private static final String DATABASE_NAME = "groceryDatabase";
-    private static final int DATABASE_VERSION = 16;
+    private static final int DATABASE_VERSION = 18;
 
     // Table Names
     private static final String TABLE_GROCERIES = "groceries";
@@ -39,6 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_CART_NAME = "cartName";
     private static final String KEY_CART_IMAGE = "cartImage";
     private static final String KEY_CART_PRICE = "cartPrice";
+    private static final String KEY_CART_QUANTITY = "cartQuantity";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -75,7 +76,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 KEY_CART_ID + " INTEGER PRIMARY KEY," +
                 KEY_CART_NAME + " TEXT," +
                 KEY_CART_IMAGE + " TEXT," +
-                KEY_CART_PRICE + " TEXT" +
+                KEY_CART_PRICE + " TEXT," +
+                KEY_CART_QUANTITY + " TEXT" +
                 ")";
 
         db.execSQL(CREATE_POSTS_TABLE);
@@ -122,12 +124,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ,  {"American Milk", "0", "11.95", "Milk"},  {"Red Apples", "0", "11.95", "Apples"},  {"Round New Yorks", "0", "11.95", "Apples"},  {"Sour Sam Apples", "0", "11.95", "Apples"}
                 ,  {"Not Red Oranges", "0", "0.95", "Oranges"},  {"Chinese", "0", "1.10", "Oranges"},  {"Box Oranges", "0", "18.95", "Oranges"},  {"Sour Keys", "0", "0.25", "Candy"}
                 ,  {"Blue Whales", "0", "0.25", "Candy"},  {"Pringles", "0", "1.25", "Candy"},  {"Johnnys Fish", "0", "11.95", "Soup"},  {"Johnnys Fish", "0", "11.95", "Soup"}
-                ,  {"Johnnys Fish", "0", "11.95", "Soup"},  {"Johnnys Fish", "0", "11.95", "Medicine"},  {"Johnnys Fish", "0", "11.95", "Medicine"},  {"Johnnys Fish", "0", "11.95", "Medicine"}
-                ,  {"Johnnys Fish", "0", "11.95", "Pasta"},  {"Johnnys Fish", "0", "11.95", "Pasta"},  {"Johnnys Fish", "0", "11.95", "Pasta"},  {"Johnnys Fish", "0", "11.95", "Condiments"}
+                ,  {"Johnnys Fish Soup", "0", "11.95", "Soup"},  {"Johnnys Fish", "0", "11.95", "Medicine"},  {"Johnnys Fish", "0", "11.95", "Medicine"},  {"Johnnys Fish", "0", "11.95", "Medicine"}
+                ,  {"Johnnys Fish Pasta", "0", "11.95", "Pasta"},  {"Johnnys Fish", "0", "11.95", "Pasta"},  {"Johnnys Fish", "0", "11.95", "Pasta"},  {"Johnnys Fish", "0", "11.95", "Condiments"}
                 ,  {"Johnnys Fish", "0", "11.95", "Condiments"},  {"Johnnys Fish", "0", "11.95", "Soft Drinks"},  {"Johnnys Fish", "0", "11.95", "Soft Drinks"},  {"Johnnys Fish", "0", "11.95", "Soft Drinks"}
-                ,  {"Johnnys Fish", "0", "11.95", "Beef"},  {"Johnnys Fish", "0", "11.95", "Condiments"},  {"Johnnys Fish", "0", "11.95", "Beef"},  {"Johnnys Fish", "0", "11.95", "Beef"}
+                ,  {"Johnnys Beef", "0", "11.95", "Beef"},  {"Johnnys Fish", "0", "11.95", "Condiments"},  {"Johnnys Fish", "0", "11.95", "Beef"},  {"Johnnys Fish", "0", "11.95", "Beef"}
                 ,  {"Johnnys Fish", "0", "11.95", "Vegetables"},  {"Johnnys Fish", "0", "11.95", "Vegetables"},  {"Johnnys Fish", "0", "11.95", "Vegetables"},  {"Johnnys Fish", "0", "11.95", "Cheese"}
-                ,  {"Johnnys Fish", "0", "11.95", "Cheese"},  {"Johnnys Fish", "0", "11.95", "Cheese"}};
+                ,  {"Johnnys Cheese", "0", "11.95", "Cheese"},  {"Johnnys Fish", "0", "11.95", "Cheese"}};
 
         for (String[] aData : data2) {
             values2.put(KEY_PRODUCTS_NAME, aData[0]);

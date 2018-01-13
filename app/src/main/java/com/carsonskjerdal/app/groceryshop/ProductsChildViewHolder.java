@@ -69,34 +69,49 @@ public class ProductsChildViewHolder extends ChildViewHolder {
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 //add the item to the shopping cart.
-                //give you the position of the parentLayout
-                int position = getAdapterPosition() - 1;
-                View view2 = itemView.getRootView();
-                RecyclerView rv = view2.findViewById(R.id.recycler_view);
-                ProductsExpandableAdapter mAdapter = (ProductsExpandableAdapter) rv.getAdapter();
-                List list = mAdapter.getParentItemList();
-                //the current product you are on
-                Products products = (Products) list.get(position);
+                    //does not work if quantity is zero
+                String quanityCount = (String) mQuanityText.getText();
+                String quanityNumber = quanityCount.replaceAll("[^0-9]", "");
+                int count = Integer.parseInt(quanityNumber);
+                if (count != 0) {
+                    //give you the position of the parentLayout
+                    int position = getAdapterPosition() - 1;
+                    View view2 = itemView.getRootView();
+                    RecyclerView rv = view2.findViewById(R.id.recycler_view);
+                    ProductsExpandableAdapter mAdapter = (ProductsExpandableAdapter) rv.getAdapter();
+                    List list = mAdapter.getParentItemList();
+                    //the current product you are on
+                    Products products = (Products) list.get(position);
 
-                Log.e("list output","" + products.getName());
+                    Log.e("list output", "" + products.getName());
 
-                String priceTag = (String) mDateText.getText();
+                    String priceTag = (String) mDateText.getText();
 
-                //toast
-                String toastMsg = mDateText.getText() + " Added To Cart";
-                Toast.makeText(view.getContext(),
-                        toastMsg,
-                        Toast.LENGTH_SHORT)
-                        .show();
+                    //toast
+                    String toastMsg = mDateText.getText() + " Added To Cart";
+                    Toast.makeText(view.getContext(),
+                            toastMsg,
+                            Toast.LENGTH_SHORT)
+                            .show();
 
-                // Add items to cart table to the database
-                ContentValues values = new ContentValues();
-                values.put("cartName", products.getName());
-                values.put("cartImage", products.getImage());
-                values.put("cartPrice", priceTag);
-                mDatabase.insert("cart",null,values);
-                Log.e("values","" + values);
+                    // Add items to cart table to the database
+                    ContentValues values = new ContentValues();
+                    values.put("cartName", products.getName());
+                    values.put("cartImage", products.getImage());
+                    values.put("cartPrice", priceTag);
+                    values.put("cartQuantity", count);
+                    mDatabase.insert("cart", null, values);
+                    Log.e("values", "" + values);
+                } else {
+                    //toast
+                    String toastMsg = "Quantity must be greater than zero.";
+                    Toast.makeText(view.getContext(),
+                            toastMsg,
+                            Toast.LENGTH_SHORT)
+                            .show();
+                }
             }
         });
     }
